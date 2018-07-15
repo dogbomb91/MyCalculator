@@ -12,9 +12,91 @@ namespace MyCalculator
 {
     public partial class Form1 : Form
     {
+        Double result;
+        String operation = "";
+        bool operated = false;
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void ButtonClick(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "0" || operated)
+            {
+                textBox1.Clear();
+            }
+
+            operated = false;
+
+            Button button = (Button)sender;
+            if(button.Text == ".")
+            {
+                if(!textBox1.Text.Contains("."))
+                {
+                    textBox1.Text = textBox1.Text + button.Text;
+                }
+            }
+            else
+            {
+                textBox1.Text = textBox1.Text + button.Text;
+            }
+        }
+
+        private void OperationClick(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            if(result != 0)
+            {
+                buttonequal.PerformClick();
+                operation = button.Text;
+                preview.Text = result + operation;//TODO: Format, add space
+
+                operated = true;
+            }
+            else
+            {
+                operation = button.Text;
+                result = Double.Parse(textBox1.Text);
+                preview.Text = result + operation;//TODO: Format, add space
+
+                operated = true;
+            }
+        }
+
+        private void ButtonclearEntryClick(object sender, EventArgs e)
+        {
+            textBox1.Text = "0";
+        }
+
+        private void ButtonClearClick(object sender, EventArgs e)
+        {
+            textBox1.Text = "0";
+            result = 0;
+        }
+
+        private void ButtonEqualClick(object sender, EventArgs e)
+        {
+            switch(operation)
+            {
+                case "+":
+                    textBox1.Text = (result + Double.Parse(textBox1.Text)).ToString();
+                    break;
+                case "-":
+                    textBox1.Text = (result - Double.Parse(textBox1.Text)).ToString();
+                    break;
+                case "*":
+                    textBox1.Text = (result * Double.Parse(textBox1.Text)).ToString();
+                    break;
+                case "/":
+                    textBox1.Text = (result / Double.Parse(textBox1.Text)).ToString();
+                    break;
+                default:
+                    break;
+            }
+            result = Double.Parse(textBox1.Text);
+            preview.Text = "";
         }
     }
 }
