@@ -51,7 +51,7 @@ namespace MyCalculator
             {
                 buttonequal.PerformClick();
                 operation = button.Text;
-                preview.Text = result + operation;//TODO: Format, add space
+                preview.Text = result + " " + operation;
 
                 operated = true;
             }
@@ -59,7 +59,7 @@ namespace MyCalculator
             {
                 operation = button.Text;
                 result = Double.Parse(textBox1.Text);
-                preview.Text = result + operation;//TODO: Format, add space
+                preview.Text = result + " " + operation;
 
                 operated = true;
             }
@@ -97,6 +97,11 @@ namespace MyCalculator
             }
             result = Double.Parse(textBox1.Text);
             preview.Text = "";
+        }
+
+        private void ButtonSignClick(object sender, EventArgs e)
+        {
+            textBox1.Text = (-1 * Double.Parse(textBox1.Text)).ToString();
         }
     }
 }

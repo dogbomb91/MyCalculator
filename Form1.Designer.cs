@@ -49,6 +49,7 @@
             this.number0 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.preview = new System.Windows.Forms.Label();
+            this.buttonsign = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonminus
@@ -271,11 +272,23 @@
             this.preview.TabIndex = 21;
             this.preview.Text = "0";
             // 
+            // buttonsign
+            // 
+            this.buttonsign.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonsign.Location = new System.Drawing.Point(12, 283);
+            this.buttonsign.Name = "buttonsign";
+            this.buttonsign.Size = new System.Drawing.Size(96, 45);
+            this.buttonsign.TabIndex = 22;
+            this.buttonsign.Text = "+/-";
+            this.buttonsign.UseVisualStyleBackColor = true;
+            this.buttonsign.Click += new System.EventHandler(this.ButtonSignClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 303);
+            this.ClientSize = new System.Drawing.Size(286, 344);
+            this.Controls.Add(this.buttonsign);
             this.Controls.Add(this.preview);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonequal);
@@ -328,6 +341,7 @@
         private System.Windows.Forms.Button number0;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label preview;
+        private System.Windows.Forms.Button buttonsign;
     }
 }
 
